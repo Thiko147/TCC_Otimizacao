@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Cliente.class</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #cc7832;}
+.s3 { color: #6897bb;}
+.s4 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Cliente.class</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Source code recreated from a .class file by IntelliJ IDEA</span>
+<span class="s0">// (powered by FernFlower decompiler)</span>
+<span class="s0">//</span>
+
+<span class="s2">package </span><span class="s1">Classes</span><span class="s2">;</span>
+
+<span class="s2">import </span><span class="s1">java.util.ArrayList</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">java.util.Scanner</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">java.util.concurrent.Callable</span><span class="s2">;</span>
+
+<span class="s2">public class </span><span class="s1">Cliente </span><span class="s2">implements </span><span class="s1">Callable {</span>
+    <span class="s2">private final double </span><span class="s1">endereco</span><span class="s2">;</span>
+    <span class="s2">private double </span><span class="s1">lastAdress = </span><span class="s3">0.0</span><span class="s2">;</span>
+    <span class="s2">private boolean </span><span class="s1">pedidoFeito = </span><span class="s2">false;</span>
+    <span class="s2">private static </span><span class="s1">ArrayList&lt;Cliente&gt; clientesExistentes = </span><span class="s2">new </span><span class="s1">ArrayList()</span><span class="s2">;</span>
+
+    <span class="s2">public </span><span class="s1">Cliente() {</span>
+        <span class="s2">this</span><span class="s1">.endereco = </span><span class="s2">this</span><span class="s1">.lastAdress + </span><span class="s3">0.5</span><span class="s2">;</span>
+        <span class="s1">clientesExistentes.add(</span><span class="s2">this</span><span class="s1">)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public double </span><span class="s1">getEndereco() {</span>
+        <span class="s2">return this</span><span class="s1">.endereco</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public </span><span class="s1">Pedido fazerPedido() {</span>
+        <span class="s1">Scanner scanner = </span><span class="s2">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+        <span class="s1">System.out.println(</span><span class="s4">&quot;Insira os Dados do seu pedido&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s2">double </span><span class="s1">tamanho = scanner.nextDouble()</span><span class="s2">;</span>
+        <span class="s1">scanner.nextLine()</span><span class="s2">;</span>
+        <span class="s1">Pedido pedido = </span><span class="s2">new </span><span class="s1">Pedido(tamanho</span><span class="s2">, this</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">System.out.println(</span><span class="s4">&quot;Pedido realizado com sucesso&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s2">return </span><span class="s1">pedido</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">setPedidoFeito(</span><span class="s2">boolean </span><span class="s1">pedidoFeito) {</span>
+        <span class="s2">this</span><span class="s1">.pedidoFeito = pedidoFeito</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public boolean </span><span class="s1">isPedidoFeito() {</span>
+        <span class="s2">return this</span><span class="s1">.pedidoFeito</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public static </span><span class="s1">ArrayList&lt;Cliente&gt; getClientesExistentes() {</span>
+        <span class="s2">return </span><span class="s1">clientesExistentes</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public </span><span class="s1">Object call() </span><span class="s2">throws </span><span class="s1">Exception {</span>
+        <span class="s2">return this</span><span class="s1">.fazerPedido()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
